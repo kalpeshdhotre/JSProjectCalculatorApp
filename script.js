@@ -5,7 +5,7 @@ let btnCancel = document.querySelector(".btnCancel");
 let stringCaptured = "";
 let result;
 
-let keyInputSet = [`.`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`, `Escape`, `Enter`, `/`, `*`, `-`, `+`];
+let keyInputSet = [`.`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`, `Escape`, `Enter`, `/`, `*`, `-`, `+`,`Backspace`];
 
 userKeyPressed.forEach((button) => {
    button.addEventListener(`click`, (event) => capture(button.innerHTML));
@@ -20,6 +20,10 @@ document.addEventListener(`keydown`, (event) => {
          return;
       } else if (event.key == "Enter") {
          showResult();
+         return;
+      } else if (event.key == "Backspace") {
+         stringCaptured = stringCaptured.substring(0, stringCaptured.length - 1);
+         document.querySelector(`.screen`).value = stringCaptured;
          return;
       }
       capture(event.key);
