@@ -28,7 +28,6 @@ document.addEventListener(`keydown`, (event) => {
    }
 });
 
-
 btnResult.addEventListener(`click`, () => showResult());
 
 btnCancel.addEventListener(`click`, () => clearScreen());
@@ -51,4 +50,3 @@ function clearScreen() {
    result = 0;
    stringCaptured = "";
 }
-
