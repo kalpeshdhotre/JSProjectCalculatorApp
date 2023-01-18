@@ -5,7 +5,7 @@ let btnCancel = document.querySelector(".btnCancel");
 let stringCaptured = "";
 let result;
 
-let keyInputSet = [`.`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`, `Escape`, `Enter`, `/`, `*`, `-`, `+`,`Backspace`];
+let keyInputSet = [`.`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`, `Escape`, `Enter`, `/`, `*`, `-`, `+`, `Backspace`];
 
 userKeyPressed.forEach((button) => {
    button.addEventListener(`click`, (event) => capture(button.innerHTML));
@@ -38,6 +38,13 @@ btnCancel.addEventListener(`click`, () => clearScreen());
 
 function capture(button) {
    console.log(`${button}`);
+   
+   // Below IF checks checks double entry of operator like /,*,-,+
+   if ([`/`, `*`, `-`, `+`].includes(button) && [`/`, `*`, `-`, `+`].includes(stringCaptured.substring(stringCaptured.length - 1))) {
+      console.log(`change of operator required`);
+      stringCaptured = stringCaptured.substring(0, stringCaptured.length - 1);
+
+   }
    stringCaptured += button;
    document.querySelector(`.screen`).value = stringCaptured;
 }
